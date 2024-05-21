@@ -90,9 +90,6 @@ video {
     font-family: 'GFF Latin', 'Noto Sans TC', 'FZLTHB', arial, "Microsoft JhengHei", "微軟正黑體", PMingLiU, "新細明體";
 }
 
-
-
-
 html {
     line-height: 1;
 }
@@ -209,8 +206,6 @@ ul.rulenotice {
 ts {
     font-size: 11px;
     color: #c7af00;
-}
-body {
 }
 
 @media only screen and (max-width: 850px) {
@@ -453,7 +448,7 @@ img.imgcenter {
     height: 95vh;
     background: #000000 url("../TSEL_files/bgup.png") 50% top no-repeat;
     background-size: cover;
-    border-bottom: 3px solid #FF0000;
+    border-bottom: 2px solid #FF1919;
     position: relative;
 }
 
@@ -1264,7 +1259,7 @@ ul.notice {
     overflow: hidden;
     height: auto;
     background: #1b0a2a;
-    background-image: url("../TSEL_files/bg.png");
+    background-image: url(../TSEL_files/bg.png);
     z-index: 2000;
     background-position: top;
     background-repeat: cover;
@@ -1973,7 +1968,7 @@ ul.timelist li {
     /* display: flex; */
     float: left;
     position: relative;
-    background-image: url("../TSEL_files/bgup.png");
+    background-image: url(../TSEL_files/bgup.png);
     background-size: 600%;
     -webkit-box-shadow: 0px 4px 1px 0px rgb(110, 7, 6);
     -moz-box-shadow: 0px 4px 1px 0px rgb(110, 7, 6);
@@ -2099,16 +2094,16 @@ nus {
 button.detailbt,
 button.detailbt2 {
     color: #000;
-    border: 2px solid rgb(189, 238, 255);
+    border: 1px solid rgb(255,69,0);
     /* margin: 13px 0; */
-    background:#84C1FF;
+    background: rgb(255,48,48);
     border-radius: 50px;
 }
 
 button.detailbt2 {
-    -webkit-box-shadow: 0px 0px 25px 4px rgb(0, 73, 209);
-    -moz-box-shadow: 0px 0px 25px 4px rgb(0, 73, 209);
-    box-shadow: 0px 0px 25px 4px rgb(0, 73, 209);
+    -webkit-box-shadow: 0px 0px 25px 4px rgb(255,181,197);
+    -moz-box-shadow: 0px 0px 25px 4px rgb(255,181,197);
+    box-shadow: 0px 0px 25px 4px rgb(255,181,197);
     -webkit-animation: jumper02 1.8s 0.66666s ease-out infinite;
     -moz-animation: jumper02 1.8s 0.66666s ease-out infinite;
     -o-animation: jumper02 1.8s 0.66666s ease-out infinite;
@@ -2117,47 +2112,47 @@ button.detailbt2 {
 
 @-webkit-keyframes jumper02 {
     0% {
-        -webkit-box-shadow: 0px 0px 25px 5px rgb(0, 73, 209);
-        -moz-box-shadow: 0px 0px 25px 5px rgb(0, 73, 209);
-        box-shadow: 0px 0px 25px 5px rgb(0, 73, 209);
+        -webkit-box-shadow: 0px 0px 25px 5px rgb(224,102,255);
+        -moz-box-shadow: 0px 0px 25px 5px rgb(224,102,255);
+        box-shadow: 0px 0px 25px 5px rgb(224,102,255);
     }
 
     50% {
-        -webkit-box-shadow: 0px 0px 25px 5px rgb(0, 73, 209, 0);
-        -moz-box-shadow: 0px 0px 25px 5px rgb(0, 73, 209, 0);
-        box-shadow: 0px 0px 25px 5px rgb(0, 73, 209, 0);
+        -webkit-box-shadow: 0px 0px 25px 5px rgba(224,102,255);
+        -moz-box-shadow: 0px 0px 25px 5px rgba(224,102,255);
+        box-shadow: 0px 0px 25px 5px rgba(224,102,255);
     }
 
     100% {
-        -webkit-box-shadow: 0px 0px 25px 5px rgb(0, 73, 209);
-        -moz-box-shadow: 0px 0px 25px 5px rgb(0, 73, 209);
-        box-shadow: 0px 0px 25px 5px rgb(0, 73, 209);
+        -webkit-box-shadow: 0px 0px 25px 5px rgb(224,102,255);
+        -moz-box-shadow: 0px 0px 25px 5px rgb(224,102,255);
+        box-shadow: 0px 0px 25px 5px rgb(224,102,255);
     }
 }
 
 @keyframes jumper02 {
     0% {
-        -webkit-box-shadow: 0px 0px 25px 5px rgb(0, 73, 209);
-        -moz-box-shadow: 0px 0px 25px 5px rgb(0, 73, 209);
-        box-shadow: 0px 0px 15px 3px rgb(0, 73, 209);
+        -webkit-box-shadow: 0px 0px 25px 5px rgb(224,102,255);
+        -moz-box-shadow: 0px 0px 25px 5px rgb(224,102,255);
+        box-shadow: 0px 0px 15px 3px rgb(224,102,255);
     }
 
     50% {
-        -webkit-box-shadow: 0px 0px 25px 5px rgb(0, 73, 209, 0);
-        -moz-box-shadow: 0px 0px 25px 5px rgb(0, 73, 209, 0);
-        box-shadow: 0px 0px 15px 3px rgb(0, 73, 209, 0);
+        -webkit-box-shadow: 0px 0px 25px 5px rgba(224,102,255,0);
+        -moz-box-shadow: 0px 0px 25px 5px rgba(224,102,255,0);
+        box-shadow: 0px 0px 15px 3px rgba(224,102,255, 0);
     }
 
     100% {
-        -webkit-box-shadow: 0px 0px 25px 5px rgb(0, 73, 209);
-        -moz-box-shadow: 0px 0px 25px 5px rgb(0, 73, 209);
-        box-shadow: 0px 0px 15px 3px rgb(0, 73, 209);
+        -webkit-box-shadow: 0px 0px 25px 5px rgb(224,102,255);
+        -moz-box-shadow: 0px 0px 25px 5px rgb(224,102,255);
+        box-shadow: 0px 0px 15px 3px rgb(224,102,255);
     }
 }
 
 button.detailbt:hover,
 button.detailbt2:hover {
-    background: #2894FF	;
+    background: rgb(255,130,171);
     color: #000;
 }
 
@@ -2883,7 +2878,6 @@ buttom.undone {
 #footer .footer_garena {
     position: absolute;
     left: 50%;
-
     margin-left: -420px;
     margin-top: 18px;
     width: 100px;
@@ -5424,8 +5418,8 @@ perspective effects (not including the modals and the overlay).
     }
 
     #header {
-        background: #0b1d29 url("../TSEL_files/bgup.png") 50% top no-repeat;
-        background-size: 80%;
+        background: #0b1d29 url(../TSEL_files/bgup.png) 50% top no-repeat;
+        background-size: 100%;
         background: contain;
         background-size: cover;
         height: 530px;
@@ -5475,8 +5469,6 @@ perspective effects (not including the modals and the overlay).
         margin-left: -19px;
     }
 }
-
-
 
 /*
 input[type=number]::-webkit-inner-spin-button,
