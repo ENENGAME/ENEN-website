@@ -25,7 +25,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="快揪最佳戰友一同出戰爭奪高額獎金，更有機會站上世界舞台挑戰地表最強好手!">
-    <meta property="og:title" content="《2024 FF 春季榮耀菁英盃》龍聚榮耀！菁英共舞">
+    <meta property="og:title" content="FFTET戰績查詢">
     <meta property="og:image" content="https://ffcup.ff.garena.tw/django-static/event/images/1200x630.jpg">
     <meta property="og:description" content="全新賽制與賽程，趕緊手刀報名，考驗你的硬實力！">
     <script type="text/javascript" src="./record_files/jquery-2.0.3.min.js.下載"></script>
@@ -67,8 +67,8 @@
             <li> <a id="nav_inform" href="https://ffenen.com/FFTET#arrowmove"><img src="./record_files/nav1.png"><img src="./record_files/nav1_ov.png"></a> </li>
             <li> <a id="nav_contest_rules" href="https://ffenen.com/FFTET/rules#arrowmove"><img src="./record_files/nav2.png"><img src="./record_files/nav2_ov.png"></a> </li>
 			<li> <a id="nav_contest_rules" href="https://ffenen.com/FFTET/choose"><img src="./record_files/nav3.png"><img src="./record_files/nav3_ov.png"></a> </li>
-            <li> <a id="nav_apply_rules" href="https://ffenen.com/FFTET/apply#arrowmove" class="nav-active"><img src="./record_files/nav4.png"><img src="./record_files/nav4_ov.png"></a> </li>
-            <li> <a id="nav_record" href="https://ffenen.com/FFTET/record#arrwmove"><img src="./record_files/nav5.png"><img src="./record_files/nav5_ov.png"></a> </li>
+            <li> <a id="nav_apply_rules" href="https://ffenen.com/FFTET/apply#arrowmove" ><img src="./record_files/nav4.png"><img src="./record_files/nav4_ov.png"></a> </li>
+            <li> <a id="nav_record" href="https://ffenen.com/FFTET/record#arrwmove"class="nav-active"><img src="./record_files/nav5.png"><img src="./record_files/nav5_ov.png"></a> </li>
             
             <li> <a id="nav_schedule" href="https://ffenen.com/FFTET/channel" target="_blank"><img src="./record_files/nav6.png"><img src="./record_files/nav6_ov.png"></a> </li>
             
@@ -86,8 +86,8 @@
             <li> <a id="nav_inform" href="https://ffenen.com/FFTET#arrowmove"><img src="./apply_files/nav1.png"><img src="./apply_files/nav1_ov.png"></a> </li>
             <li> <a id="nav_contest_rules" href="https://ffenen.com/FFTET/rules#arrowmove"><img src="./apply_files/nav2.png"><img src="./apply_files/nav2_ov.png"></a> </li>
 			<li> <a id="nav_contest_rules" href="https://ffenen.com/FFTET/choose"><img src="./apply_files/nav3.png"><img src="./apply_files/nav3_ov.png"></a> </li>
-            <li> <a id="nav_apply_rules" href="https://ffenen.com/FFTET/apply#arrowmove" class="nav-active"><img src="./apply_files/nav4.png"><img src="./apply_files/nav4_ov.png"></a> </li>
-            <li> <a id="nav_record" href="https://ffenen.com/FFTET/record#arrowmove"><img src="./apply_files/nav5.png"><img src="./apply_files/nav5_ov.png"></a> </li>
+            <li> <a id="nav_apply_rules" href="https://ffenen.com/FFTET/apply#arrowmove"><img src="./apply_files/nav4.png"><img src="./apply_files/nav4_ov.png"></a> </li>
+            <li> <a id="nav_record" href="https://ffenen.com/FFTET/record#arrowmove" class="nav-active"><img src="./apply_files/nav5.png"><img src="./apply_files/nav5_ov.png"></a> </li>
             
             <li> <a id="nav_schedule" href="https://ffenen.com/FFTET/channel" target="_blank"><img src="./apply_files/nav6.png"><img src="./apply_files/nav6_ov.png"></a> </li>
             
@@ -102,62 +102,35 @@
 <section id="s2">
     <div class="inner-container">
         <div data-aos="fade-down" data-aos-delay="10" class="title aos-init"><img src="./record_files/titlecon1.png" alt=""></div>
+        <h2>小組賽 18 組總積分</h2>
+        
         <div class="warnbox">
-    <iframe id="content-frame" src="http://league.ffenen.com/HTML_RANK.html" style="width: 100%; height: 1300px; border: none;"></iframe>
-    <button id="refresh-button" onclick="refreshIframe()">重整TOP18成績</button>
-</div>
-
+            <iframe id="content-frame1" src="http://league.ffenen.com/HTML_RANK.html" style="width: 100%; height: 1100px; border: none;"></iframe>
+            <button id="refresh-button1" onclick="refreshIframe1()">重整TOP18成績</button>
+        </div>
     </div>
-</section>
-
-<section id="s2">
-<style>
-    #refresh-button {
-        display: block;
-        margin: 20px auto;
-        padding: 10px 20px;
-        background-color: #589eff; /* 自訂按鈕背景顏色 */
-        color: rgb(255, 255, 255); /* 自訂按鈕文字顏色 */
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-    }
-
-    #refresh-button:hover {
-        background-color: #d0d700; /* 自訂按鈕懸停背景顏色 */
-    }
-
-    .warnbox {
-        background-color: #3a3a3a; /* 灰色背景 */
-        padding: 20px;
-        text-align: center;
-    }
-    <body data-aos-easing="ease-in-out-back" data-aos-duration="1000" data-aos-delay="0" style="overflow: hidden;">
-
-</style>
-
-<script>
-    function refreshIframe() {
-        var iframe = document.getElementById('content-frame');
-        iframe.src = iframe.src;
-    }
-</script>
 </section>
 
 <section id="s2">
     <div class="inner-container">
-<div class="warnbox">
-    <iframe id="content-frame" src="http://league.ffenen.com/HTML_RANK2.html" style="width: 100%; height: 700px; border: none;"></iframe>
-    <button id="refresh-button" onclick="refreshIframe()">重整TOP12成績</button>
-</div>
-
+        <div data-aos="fade-down" data-aos-delay="10" class="title aos-init"><img src="./record_files/titlecon2.png" alt=""></div>
+        <h2>總決賽 12 組總積分</h2>
+        
+        <div class="warnbox">
+            <iframe id="content-frame2" src="http://league.ffenen.com/HTML_RANK2.html" style="width: 100%; height: 700px; border: none;"></iframe>
+            <button id="refresh-button2" onclick="refreshIframe2()">重整TOP12成績</button>
+        </div>
     </div>
 </section>
 
-<section id="s2">
 <style>
-    #refresh-button {
+    .warnbox {
+        background-color: #3a3a3a; /* 灰色背景 */
+        padding: 20px;
+        text-align: center;
+    }
+
+    .warnbox button {
         display: block;
         margin: 20px auto;
         padding: 10px 20px;
@@ -169,27 +142,24 @@
         font-size: 16px;
     }
 
-    #refresh-button:hover {
+    .warnbox button:hover {
         background-color: #d0d700; /* 自訂按鈕懸停背景顏色 */
     }
-
-    .warnbox {
-        background-color: #3a3a3a; /* 灰色背景 */
-        padding: 20px;
-        text-align: center;
-    }
-    <body data-aos-easing="ease-in-out-back" data-aos-duration="1000" data-aos-delay="0" style="overflow: hidden;">
-
 </style>
 
 <script>
-    function refreshIframe() {
-        var iframe = document.getElementById('content-frame');
+    function refreshIframe1() {
+        var iframe = document.getElementById('content-frame1');
+        iframe.src = iframe.src;
+    }
+
+    function refreshIframe2() {
+        var iframe = document.getElementById('content-frame2');
         iframe.src = iframe.src;
     }
 </script>
 
-</section>
+
 
 <footer>
     <div id="footerswarp" class="footerbg">
