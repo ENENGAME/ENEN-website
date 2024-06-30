@@ -5424,7 +5424,7 @@ perspective effects (not including the modals and the overlay).
     }
 
     #header {
-        background: #0b1d29 url("../FFSGC_files/bg03.png") 50% top no-repeat;
+        background: #0b1d29 url("../FFSGC_files/bgup.png") 50% top no-repeat;
         background-size: 80%;
         background: contain;
         background-size: cover;
