@@ -192,6 +192,19 @@
     </div>
 </footer>
 </div>
+<script>
+    function checkPassword() {
+        const correctPassword = "S1FFSGC"; // 請將your_password替換為您想要的密碼
+        const password = prompt("⚠️僅限參賽隊伍繳交⚠️請輸入通關密語:");
+
+        if (password === correctPassword) {
+            return true;
+        } else {
+            alert("輸入的通關密語不正確，請重新輸入。");
+            return false;
+        }
+    }
+</script>
 <script src="./record_files/jquery.scrollto.js.下載"></script>
 <script src="./record_files/jquery.easing.1.3.js.下載"></script>
 <script src="./record_files/detectmobilebrowser.js.下載"></script>
