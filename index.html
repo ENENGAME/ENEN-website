@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="恩恩遊戲日常">
+    <meta property="og:description" content="ENENGAMES，簡稱:ENEN。">
+    <meta property="og:image" content="./FFSGC_files/主圖.jpg">
+    <meta property="og:url" content="https://www.enenlive.com">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="https://www.enenlive.com/ENEN.ico" type="image/x-icon">
     <title>恩恩遊戲日常</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <style>
@@ -28,14 +34,39 @@
             justify-content: center;
             background-color: #00509e;
         }
+        nav.desktop ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav.desktop ul li {
+            position: relative;
+        }
         nav.desktop a {
             color: #fff;
             padding: 14px 20px;
             text-decoration: none;
             text-align: center;
+            display: block;
         }
-        nav.desktop a:hover {
+        nav.desktop a:hover, nav.desktop ul li:hover > a {
             background-color: #003f7f;
+        }
+        nav.desktop ul li ul {
+            display: none;
+            position: absolute;
+            background-color: #00509e;
+            top: 100%;
+            left: 0;
+            min-width: 160px;
+            z-index: 1000;
+        }
+        nav.desktop ul li:hover ul {
+            display: block;
+        }
+        nav.desktop ul li ul li {
+            width: 100%;
         }
         nav.mobile {
             display: none;
@@ -45,17 +76,34 @@
             transition: max-height 0.5s ease-out;
             max-height: 0;
         }
+        nav.mobile.active {
+            max-height: 500px;
+        }
         nav.mobile a {
             color: #fff;
             padding: 14px 20px;
             text-decoration: none;
             text-align: center;
+            display: block;
         }
         nav.mobile a:hover {
             background-color: #003f7f;
         }
-        nav.mobile.active {
-            max-height: 300px;
+        .mobile-submenu {
+            display: none;
+            background-color: #003f7f;
+        }
+        nav.mobile a.mobile-dropdown {
+            cursor: pointer;
+            position: relative;
+        }
+        nav.mobile a.mobile-dropdown::after {
+            content: " ▼";
+            font-size: 12px;
+            margin-left: 5px;
+        }
+        nav.mobile a.mobile-dropdown.active + .mobile-submenu {
+            display: block;
         }
         .content {
             padding: 20px;
@@ -190,7 +238,7 @@
 <body>
 
 <header>
-    <h1 data-aos="fade-down" data-aos-duration="2000">恩恩遊戲日常</h1>
+    <h1 data-aos="zoom-out" data-aos-duration="2000">恩恩遊戲日常</h1>
     <p>不定時發布遊戲直播或日常生活影片</p>
     <div class="hamburger" onclick="toggleMenu()">
         <div></div>
@@ -200,19 +248,27 @@
 </header>
 
 <nav class="desktop">
-    <a href="https://www.enenlive.com">首頁</a>
-    <a href="https://www.enenlive.com/channel">實況頻道</a>
-    <a href="https://www.enenlive.com/broadcast">轉播經歷</a>
-    <a href="#">合作經歷</a>
-    <a href="#">聯繫我們</a>
+    <ul>
+        <li><a href="https://www.enenlive.com">✵首頁✵</a></li>
+        <li><a href="https://www.enenlive.com/channel">✵實況頻道✵</a></li>
+        <li><a href="https://www.enenlive.com/broadcast">✵轉播經歷✵</a></li>
+        <li><a href="https://www.enenlive.com/teamwork">⬇✵合作經歷✵⬇</a>
+            <ul>
+                <li><a href="https://www.enenlive.com/FFTET">FFTET聯賽官網</a></li>
+                <li><a href="https://www.enenlive.com/FFSGC">FFSGC聯賽官網</a></li>
+                <li><a href="https://www.xhdgame.com">XHD代儲工作室</a></li>
+            </ul>
+        </li>
+        <li><a href="https://www.enenlive.com/contact">✵聯繫我們✵</a></li>
+    </ul>
 </nav>
 
 <nav id="navMenu" class="mobile">
-    <a href="https://www.enenlive.com">首頁</a>
-    <a href="https://www.enenlive.com/channel">實況頻道</a>
-    <a href="https://www.enenlive.com/broadcast">轉播經歷</a>
-    <a href="#">合作經歷</a>
-    <a href="#">聯繫我們</a>
+    <a href="https://www.enenlive.com">✵首頁✵</a>
+    <a href="https://www.enenlive.com/channel">✵實況頻道✵</a>
+    <a href="https://www.enenlive.com/broadcast">✵轉播經歷✵</a>
+    <a href="https://www.enenlive.com/teamwork">✵合作經歷✵</a>
+    <a href="https://www.enenlive.com/contact">✵聯繫我們✵</a>
 </nav>
 
 <div class="content">
@@ -228,14 +284,9 @@
         <img src="index_files/頻道主題.png" alt="您的照片">
     </div>
 
-    <div class="section" data-aos="fade-up" data-aos-duration="1500">
-        <h2>最新賽評文章</h2>
-        <img src="path/to/thumbnail.jpg" alt="賽評文章標題"><BR>
-        <a href="#" class="button">閱讀更多</a>
-    </div>
-
     <div class="section" data-aos="flip-up" data-aos-duration="1500">
-        <h2>轉播經歷 <a href="#" class="button">了解更多</a></h2>
+        <h2>轉播經歷</h2>
+        <h3><a href="#" class="button">點擊查看詳細資訊</a></h3>
         <h3>擔任2023 FFSI世界盃台灣區小組賽賽評<br>(2023/05/12～2023/05/14)</h3>
         <a href="https://www.youtube.com/watch?v=o2GRqJYxmr0" class="button">點我查看直播影片</a>
         <h3>受邀轉播2023 LGDS 求生大挑戰DAY1&DAY2<br>(2023/04/22～2023/04/23)</h3>
@@ -243,16 +294,12 @@
     </div>
 
     <div class="section" data-aos="zoom-in" data-aos-duration="1500">
-        <h2>部落格</h2>
-        <h3>遊戲心得</h3>
-        <img src="path/to/thumbnail.jpg" alt="文章標題">
-        <a href="#" class="button">閱讀更多</a>
-        <h3>賽事評論</h3>
-        <img src="path/to/thumbnail.jpg" alt="文章標題">
-        <a href="#" class="button">閱讀更多</a>
+        <h2>合作網站</h2>
+        <h3>目前已有多個自製網站，也有合作的經驗</h3>
+        <a href="https://www.enenlive.com/teamwork" class="button">了解更多</a>
     </div>
 </div>
-
+<br><br>
 <div class="footer">
     <div class="wave">
         <svg viewBox="0 0 500 150" preserveAspectRatio="none">
@@ -261,8 +308,10 @@
     </div>
     <div class="footer-content">
         <div class="social-icons">
-            <br><br><br><br><br><br><br><br><br>
-            <h3>合作信箱austin961216@gmail.com</h3>
+            <br><br><br><br><br><br><br><br>
+            <h3>合作信箱<br>austin961216@gmail.com</h3>
+        </div>
+        <div class="social-icons">
             <a href="https://www.facebook.com/profile.php?id=100027752241758&locale=zh_TW"><img src="index_files/FB.png" alt="Facebook"></a>
             <a href="https://www.tiktok.com/@enengame"><img src="index_files/TK.png" alt="Twitter"></a>
             <a href="https://www.instagram.com/enen._.1216"><img src="index_files/IG.png" alt="Instagram"></a>
@@ -272,13 +321,61 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
 <script>
     AOS.init();
+
     function toggleMenu() {
         var nav = document.getElementById("navMenu");
         nav.classList.toggle("active");
     }
+
+    // 手機版下拉選單的處理
+    document.querySelector('.mobile-dropdown').addEventListener('click', function() {
+        this.classList.toggle('active');
+        var submenu = this.nextElementSibling;
+        submenu.classList.toggle('active');
+    });
 </script>
 
+<!-- 禁用F12檢查功能 -->
+<script>
+    // 禁用 F12 键
+    document.onkeydown = function(e) {
+        if (e.key === "F12" || e.keyCode === 123) {
+            e.preventDefault();
+            return false;
+        }
+    };
+    
+    // 禁用右键菜单
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+    
+    // 禁用 Ctrl + Shift + I（打开开发者工具）
+    document.onkeydown = function(e) {
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+            e.preventDefault();
+            return false;
+        }
+    };
+    
+    // 禁用 Ctrl + Shift + J（打开控制台）
+    document.onkeydown = function(e) {
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+            e.preventDefault();
+            return false;
+        }
+    };
+    
+    // 禁用 Ctrl + U（查看源代码）
+    document.onkeydown = function(e) {
+        if (e.ctrlKey && e.keyCode === 85) {
+            e.preventDefault();
+            return false;
+        }
+    };
+</script>
 </body>
 </html>
