@@ -266,6 +266,11 @@
         display: none;
     }
 }
+.youtube-stats {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #000000;
+        }
 
         .footer {
             position: relative;
@@ -422,7 +427,8 @@
     <div class="box-container">
         <div class="box">
             <h2>YOUTUBE</h2>
-            <p>不定時上片<br>不定時會開直播<br>上傳遊戲影片、日常影片</p>
+            <p>不定時上片<br>上傳遊戲影片、日常影片</p>
+            <p id="youtube-subscribers" class="youtube-stats">即時訂閱人數：載入中...</p>
             <a href="https://www.youtube.com/@ENENGAMES" class="button">點擊進入</a>
         </div>
         <div class="box">
@@ -442,6 +448,7 @@
         </div>
     </div>
 </div>
+
 
 <br><br><br>
 <div class="footer">
@@ -466,6 +473,28 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+<script>
+    AOS.init();
+
+    // YouTube API 訂閱人數顯示
+    const apiKey = 'AIzaSyB0pjUimtoomamQ9BVPGwIB-36VNFlVlds';  // 替換為你的 YouTube API Key
+    const channelId = 'UCc912F1Y6cSFMqhY-Xq9B7g';  // 替換為你的 YouTube 頻道 ID
+
+    async function fetchYoutubeSubscribers() {
+        const url = `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${apiKey}`;
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            const subscriberCount = data.items[0].statistics.subscriberCount;
+            document.getElementById('youtube-subscribers').textContent = `即時訂閱人數：${subscriberCount} 訂閱`;
+        } catch (error) {
+            console.error('無法獲取訂閱人數', error);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', fetchYoutubeSubscribers);
+</script>
 
 <script>
     AOS.init();
