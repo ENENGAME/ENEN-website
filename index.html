@@ -1,396 +1,96 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="恩恩遊戲日常">
-    <meta property="og:description" content="ENENGAMES，簡稱:ENEN。">
-    <meta property="og:image" content="https://www.enenlive.com/網站縮圖.png">
-    <meta property="og:url" content="https://www.enenlive.com">
-    <meta property="og:type" content="website">
-    <link rel="icon" href="https://www.enenlive.com/ENEN.ico" type="image/x-icon">
-    <title>恩恩遊戲日常</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <style>
-        
-        body {
-            font-family: MS UI Gothic, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            background-image: url('ENEN_files/bg.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        header {
-            background-color: #003366;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-        }
-        nav.desktop {
-            display: flex;
-            justify-content: center;
-            background-color: #00509e;
-        }
-        nav.desktop ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        nav.desktop ul li {
-            position: relative;
-        }
-        nav.desktop a {
-            color: #fff;
-            padding: 14px 20px;
-            text-decoration: none;
-            text-align: center;
-            display: block;
-        }
-        nav.desktop a:hover, nav.desktop ul li:hover > a {
-            background-color: #003f7f;
-        }
-        nav.desktop ul li ul {
-            display: none;
-            position: absolute;
-            background-color: #00509e;
-            top: 100%;
-            left: 0;
-            min-width: 160px;
-            z-index: 1000;
-        }
-        nav.desktop ul li:hover ul {
-            display: block;
-        }
-        nav.desktop ul li ul li {
-            width: 100%;
-        }
-        nav.mobile {
-            display: none;
-            flex-direction: column;
-            background-color: #00509e;
-            overflow: hidden;
-            transition: max-height 0.5s ease-out;
-            max-height: 0;
-        }
-        nav.mobile.active {
-            max-height: 500px;
-        }
-        nav.mobile a {
-            color: #fff;
-            padding: 14px 20px;
-            text-decoration: none;
-            text-align: center;
-            display: block;
-        }
-        nav.mobile a:hover {
-            background-color: #003f7f;
-        }
-        .mobile-submenu {
-            display: none;
-            background-color: #003f7f;
-        }
-        nav.mobile a.mobile-dropdown {
-            cursor: pointer;
-            position: relative;
-        }
-        nav.mobile a.mobile-dropdown::after {
-            content: " ▼";
-            font-size: 12px;
-            margin-left: 5px;
-        }
-        nav.mobile a.mobile-dropdown.active + .mobile-submenu {
-            display: block;
-        }
-        .content {
-            padding: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .section {
-            margin-bottom: 40px;
-            background-color: #6a89ae;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .section img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-        .section h2 {
-            color: #ffffff;
-        }
-        .footer {
-            position: relative;
-            background: #003366;
-            color: #fff;
-            padding: 40px 20px;
-            text-align: center;
-        }
-        .footer .wave {
-            position: absolute;
-            top: -80px;
-            left: 0;
-            width: 100%;
-            overflow: hidden;
-            line-height: 0;
-        }
-        .footer .wave svg {
-            position: relative;
-            display: block;
-            width: calc(132% + 1.3px);
-            height: 160px;
-        }
-        .footer .wave svg path {
-            fill: #003366;
-        }
-        .footer-content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-        .footer-content img {
-            width: 40px;
-            height: auto;
-            margin: 0 10px;
-        }
-        .footer-content .social-icons {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .footer-content p,
-        .footer-content a {
-            color: #fff;
-        }
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 10px;
-            position: absolute;
-            right: 20px;
-            top: 20px;
-        }
-        .hamburger div {
-            width: 25px;
-            height: 3px;
-            background-color: #fff;
-            margin: 4px 0;
-        }
-        @media (max-width: 768px) {
-            nav.desktop {
-                display: none;
-            }
-            nav.mobile {
-                display: flex;
-            }
-            .hamburger {
-                display: flex;
-            }
-        }
-        @media (min-width: 769px) {
-            nav.mobile {
-                display: none;
-            }
-        }
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            max-width: 100%;
-            background: #ffffff;
-        }
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        .button {
-            background-color: #85dbffa1;
-            color: #ffffff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            text-align: center;
-            margin-bottom: 10px;
-            cursor: pointer;
-            display: inline-block;
-            text-decoration: none;
-        }
-        .button:hover {
-            background-color: #0099cc;
-        }
-    </style>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8092983480404319"
-crossorigin="anonymous">
-</script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="恩恩遊戲日常">
+  <meta property="og:description" content="ENENGAMES，簡稱:ENEN。">
+  <meta property="og:image" content="https://www.enenlive.com/網站縮圖.png">
+  <meta property="og:url" content="https://www.enenlive.com">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="https://www.enenlive.com/ENEN.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://enengame.github.io/FFTPL/PNG/font.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/cwtexyen.css">
+  <link rel="stylesheet" href="index_files/index_style.css">
+  <title>恩恩遊戲日常</title>
 </head>
 <body>
-
-<header>
-    <h1 data-aos="zoom-out" data-aos-duration="2000">恩恩遊戲日常</h1>
-    <p>不定時發布遊戲直播或日常生活影片</p>
-    <div class="hamburger" onclick="toggleMenu()">
-        <div></div>
-        <div></div>
-        <div></div>
+  <header>
+    <div class="logo">
+      <a href="https://www.enenlive.com">
+        <img src="index_files/YTCHANNEL.png" alt="ENEN GAMES Logo">
+      </a>
     </div>
-</header>
-
-<nav class="desktop">
-    <ul>
-        <li><a href="https://www.enenlive.com">✵首頁✵</a></li>
-        <li><a href="https://www.enenlive.com/channel">✵實況頻道✵</a></li>
-        <li><a href="https://www.enenlive.com/broadcast">✵轉播經歷✵</a></li>
-        <li><a href="https://www.enenlive.com/cooperate">✵合作介紹✵</a></li>
-        <li><a href="#">⬇✵合作經歷✵⬇</a>
-            <ul>
-                <li><a href="https://league.enenlive.com">FREE FIRE賽事</a></li>
-                <li><a href="https://www.xhdgame.com">XHD代儲工作室</a></li>
-                <li><a href="https://www.fulingem.com">福襄骨灰罐公司</a></li>
-            </ul>
-        </li>
-        <li><a href="https://www.enenlive.com/contact">✵聯繫我們✵</a></li>
-    </ul>
-</nav>
-
-<nav id="navMenu" class="mobile">
-    <a href="https://www.enenlive.com">✵首頁✵</a>
-    <a href="https://www.enenlive.com/channel">✵實況頻道✵</a>
-    <a href="https://www.enenlive.com/broadcast">✵轉播經歷✵</a>
-    <a href="https://www.enenlive.com/cooperate">✵合作介紹✵</a>
-    <a href="#" class="mobile-dropdown">✵網站合作經歷✵</a> <!-- 用于触发下拉菜单 -->
-    <div class="mobile-submenu">
-        <a href="https://league.enenlive.com">FREE FIRE賽事</a>
-        <a href="https://www.xhdgame.com">XHD代儲工作室</a>
-        <a href="https://www.fulingem.com">福襄骨灰罐公司</a>
+    <nav>
+      <a href="https://www.enenlive.com" class="active">首頁</a>
+      <a href="https://www.enenlive.com/channel">影音頻道</a>
+      <a href="https://www.enenlive.com/broadcast">轉播經歷</a>
+      <a href="https://www.enenlive.com/cooperate">合作介紹</a>
+      <a href="https://www.enenlive.com/cooperate_experience">合作經歷</a>
+      <a href="https://www.enenlive.com/contact">聯絡資訊</a>
+    </nav>
+    <button class="nav-btn" id="navBtn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="https://www.enenlive.com">首頁</a>
+      <a href="https://www.enenlive.com/channel">影音頻道</a>
+      <a href="https://www.enenlive.com/broadcast">轉播經歷</a>
+      <a href="https://www.enenlive.com/cooperate">合作介紹</a>
+      <a href="https://www.enenlive.com/cooperate_experience">合作經歷</a>
+      <a href="https://www.enenlive.com/contact">聯絡資訊</a>
     </div>
-    <a href="https://www.enenlive.com/contact">✵聯繫我們✵</a>
-</nav>
+  </header>
 
-
-<div class="content">
-    <div class="section" data-aos="zoom-out" data-aos-duration="1500">
-        <img src="ENEN_files/新YT頭像1.png" alt="Logo">
-        <h2>實況頻道</h2><h3>宣傳影片</h3>
-        <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/OR1KQeCBE8M" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
+  <main>
+    <div class="intro-section">
+      <img src="index_files/新YT頭像1.png" alt="ENEN GAMES Mark" class="enlarged-image">
+      <p>恩恩遊戲日常 是一個專注於電競賽事轉播及遊戲分析的平台。</p>
     </div>
 
-    <div class="section" data-aos="zoom-in-down" data-aos-duration="1500">
-        <img src="ENEN_files/頻道主題.png" alt="您的照片">
+    <div class="blog-post">
+      <h2>自我介紹</h2>
+      <img src="index_files/頻道主題.png" alt="Game image">
     </div>
 
-    <div class="section" data-aos="flip-up" data-aos-duration="1500">
-        <h2>轉播經歷</h2>
-        <h3><a href="https://www.enenlive.com/broadcast" class="button">點擊查看詳細資訊</a></h3>
-        <h3>擔任2023 FFSI世界盃台灣區小組賽賽評<br>(2023/05/12～2023/05/14)</h3>
-        <a href="https://www.youtube.com/watch?v=o2GRqJYxmr0" class="button">點我查看直播影片</a>
-        <h3>受邀轉播2023 LGDS 求生大挑戰DAY1&DAY2<br>(2023/04/22～2023/04/23)</h3>
-        <a href="https://www.youtube.com/watch?v=6PN1NgdRorM&t" class="button">點我查看直播影片</a>
+    <div class="blog-post">
+      <h2>頻道宣傳短片</h2>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/OR1KQeCBE8M" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe>
+      </div>
     </div>
+  </main>
 
-    <div class="section" data-aos="zoom-in" data-aos-duration="1500">
-        <h2>合作網站</h2>
-        <h3>目前已有多個自製網站，也有合作的經驗</h3>
-        <a href="https://www.enenlive.com/cooperate" class="button">了解更多</a>
+  <footer>
+    <div class="social-icons">
+      <a href="https://www.youtube.com/@ENENGAMES" target="_blank" class="icon youtube" aria-label="YouTube">
+        <img src="index_files/YT.png" alt="YouTube">
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=100027752241758&locale=zh_TW" target="_blank" class="icon FB" aria-label="Twitch">
+        <img src="index_files/FB.png" alt="FB">
+      </a>
+      <a href="https://www.instagram.com/enen._.1216" target="_blank" class="icon IG" aria-label="IG">
+        <img src="index_files/IG.png" alt="IG">
+      </a>
+      <a href="https://www.tiktok.com/@enengame" target="_blank" class="icon TIKTOK" aria-label="TIKTOK">
+        <img src="index_files/TK.png" alt="TIKTOK">
+      </a>
+      <a href="https://discord.gg/t3qEyuxCAr" target="_blank" class="icon DC" aria-label="DC">
+        <img src="index_files/DC.png" alt="DC">
+      </a>
     </div>
-</div>
-<br><br>
-<div class="footer">
-    <div class="wave">
-        <svg viewBox="0 0 500 150" preserveAspectRatio="none">
-            <path d="M-13.31,57.99 C149.99,150.00 271.30,-49.99 523.32,52.99 L500.00,150.00 L0.00,150.00 Z"></path>
-        </svg>
-    </div>
-    <div class="footer-content">
-        <div class="social-icons">
-            <br><br><br><br><br><br><br><br>
-            <h3>合作信箱<br>austin961216@gmail.com</h3>
-        </div>
-        <div class="social-icons">
-            <a href="https://www.youtube.com/@ENENGAMES"><img src="ENEN_files/YT.png" alt="YouTube"></a>
-            <a href="https://www.facebook.com/profile.php?id=100027752241758&locale=zh_TW"><img src="ENEN_files/FB.png" alt="Facebook"></a>
-            <a href="https://www.tiktok.com/@enengame"><img src="ENEN_files/TK.png" alt="Twitter"></a>
-            <a href="https://www.instagram.com/enen._.1216"><img src="ENEN_files/IG.png" alt="Instagram"></a>
-        </div>
-        <p>©2024～2026 ENEN ALL RIGHTS RESERVED。</p>
-    </div>
-</div>
+    &copy; 2024～2026<br>ENEN ALL RIGHTS RESERVED。
+  </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-
-<script>
-    AOS.init();
-
-    function toggleMenu() {
-        var nav = document.getElementById("navMenu");
-        nav.classList.toggle("active");
-    }
-
-    // 手機版下拉選單的處理
-    document.querySelector('.mobile-dropdown').addEventListener('click', function() {
-        this.classList.toggle('active');
-        var submenu = this.nextElementSibling;
-        submenu.classList.toggle('active');
+  <script>
+    document.getElementById('navBtn').addEventListener('click', function () {
+      const mobileNav = document.getElementById('mobileNav');
+      mobileNav.classList.toggle('active');
     });
-</script>
-
-<!-- 禁用F12檢查功能 -->
-<script>
-    // 禁用 F12 键
-    document.onkeydown = function(e) {
-        if (e.key === "F12" || e.keyCode === 123) {
-            e.preventDefault();
-            return false;
-        }
-    };
-    
-    // 禁用右键菜单
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-    });
-    
-    // 禁用 Ctrl + Shift + I（打开开发者工具）
-    document.onkeydown = function(e) {
-        if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
-            e.preventDefault();
-            return false;
-        }
-    };
-    
-    // 禁用 Ctrl + Shift + J（打开控制台）
-    document.onkeydown = function(e) {
-        if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
-            e.preventDefault();
-            return false;
-        }
-    };
-    
-    // 禁用 Ctrl + U（查看源代码）
-    document.onkeydown = function(e) {
-        if (e.ctrlKey && e.keyCode === 85) {
-            e.preventDefault();
-            return false;
-        }
-    };
-</script>
+  </script>
 </body>
 </html>
