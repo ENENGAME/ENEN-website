@@ -333,9 +333,61 @@ main {
     transform: scale(1);
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
 }
-
-
-
+/* 外框並居中的樣式 */
+.salon-photo-section {
+    display: flex;               /* 使用 Flexbox 來居中對齊 */
+    justify-content: center;     /* 水平居中 */
+    align-items: center;         /* 垂直居中 */
+    margin-bottom: 20px;         /* 設定底部間距 */
+    
+    /* 藍色系霓虹燈邊框效果 */
+    border: 3px solid transparent; /* 透明邊框 */
+    padding: 0px;                 /* 為了讓邊框有足夠空間顯示霓虹燈效果 */
+    background-origin: border-box;  /* 背景從邊框的區域開始 */
+    background-clip: content-box, border-box; /* 讓背景只影響邊框部分 */
+    
+    border-radius: 10px;           /* 圓角邊框 */
+    width: 80%;                    /* 設定外框寬度為 80% */
+    max-width: 780px;              /* 最大寬度為 780px */
+    margin-left: auto;             /* 水平居中 */
+    margin-right: auto;            /* 水平居中 */
+    animation: neonBlueBorder 1.8s ease-in-out infinite; /* 霓虹藍邊框動畫效果 */
+  }
+  
+  /* 藍色系邊框動畫效果 */
+  @keyframes neonBlueBorder {
+    0% {
+      border-color: #0000ff;
+    }
+    14% {
+      border-color: #00bfff;
+    }
+    28% {
+      border-color: #1e90ff;
+    }
+    42% {
+      border-color: #4682b4;
+    }
+    57% {
+      border-color: #5f9ea0;
+    }
+    71% {
+      border-color: #0000cd;
+    }
+    85% {
+      border-color: #6495ed;
+    }
+    100% {
+      border-color: #4169e1;
+    }
+  }
+  
+  /* 圖片樣式 */
+  .salon-photo {
+    width: 100%;   /* 設定圖片寬度為父容器的 100% */
+    height: auto;  /* 高度自動調整，保持圖片比例 */
+    border-radius: 8px;  /* 圓角效果 */
+  }
 /* Footer */
 footer {
     background: #1a1a2e;
