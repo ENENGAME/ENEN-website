@@ -335,23 +335,23 @@ main {
 }
 /* 外框並居中的樣式 */
 .salon-photo-section {
-    display: flex !important;               /* 使用 Flexbox 來居中對齊 */
-    justify-content: center !important;     /* 水平居中 */
-    align-items: center !important;         /* 垂直居中 */
-    margin-bottom: 20px !important;         /* 設定底部間距 */
+    display: flex ;               /* 使用 Flexbox 來居中對齊 */
+    justify-content: center ;     /* 水平居中 */
+    align-items: center ;         /* 垂直居中 */
+    margin-bottom: 20px ;         /* 設定底部間距 */
     
     /* 藍色系霓虹燈邊框效果 */
-    border: 3px solid transparent !important; /* 透明邊框 */
-    padding: 0px !important;                 /* 為了讓邊框有足夠空間顯示霓虹燈效果 */
-    background-origin: border-box !important;  /* 背景從邊框的區域開始 */
-    background-clip: content-box, border-box !important; /* 讓背景只影響邊框部分 */
+    border: 3px solid transparent ; /* 透明邊框 */
+    padding: 0px ;                 /* 為了讓邊框有足夠空間顯示霓虹燈效果 */
+    background-origin: border-box ;  /* 背景從邊框的區域開始 */
+    background-clip: content-box, border-box ; /* 讓背景只影響邊框部分 */
     
-    border-radius: 10px !important;           /* 圓角邊框 */
-    width: 80% !important;                    /* 設定外框寬度為 80% */
-    max-width: 780px !important;              /* 最大寬度為 780px */
-    margin-left: auto !important;             /* 水平居中 */
-    margin-right: auto !important;            /* 水平居中 */
-    animation: neonBlueBorder 1.8s ease-in-out infinite !important; /* 霓虹藍邊框動畫效果 */
+    border-radius: 10px ;           /* 圓角邊框 */
+    width: 80% ;                    /* 設定外框寬度為 80% */
+    max-width: 780px ;              /* 最大寬度為 780px */
+    margin-left: auto ;             /* 水平居中 */
+    margin-right: auto ;            /* 水平居中 */
+    animation: neonBlueBorder 1.8s ease-in-out infinite ; /* 霓虹藍邊框動畫效果 */
   }
   
   /* 藍色系邊框動畫效果 */
