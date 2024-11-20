@@ -169,7 +169,7 @@ background: #4c5a73;
       display: flex;
     }
 
-    /* Mobile Layout - Intro Section */
+  /* Mobile Layout - Intro Section */
     .intro-section {
       flex-direction: column; /* 讓圖片和文字上下排列 */
       align-items: center;
@@ -180,82 +180,171 @@ background: #4c5a73;
       margin-bottom: 15px;
       width: 100px; /* 調整大小以適應手機 */
     }
-  }
+}
 
-  /* Main Content - Blog Style */
-  main {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 30px auto;
-    background: #1c1c2b;
-    border-radius: 12px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
-  }
+/* Main Content - Blog Style */
+main {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 30px auto;
+  background: #1c1c2b;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+}
 
-  /* Intro Section Style */
-  .intro-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 30px;
-    padding: 20px;
-    background: #0b0e25;
-    border-radius: 12px;
-    box-shadow: -1px 2px 18px rgba(255, 255, 255, 0.4);
-  }
+/* Intro Section Style */
+.intro-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #0b0e25;
+  border-radius: 12px;
+  box-shadow: -1px 2px 18px rgba(255, 255, 255, 0.4);
+}
 
-  .intro-section img {
-    width: 100%; /* 根據容器自動調整寬度 */
-    max-width: 520px; /* 設定最大寬度，防止放大過多 */
-    height: auto; /* 自動調整高度，保持比例 */
-    border-radius: 50%; /* 保持圓形 */
-    box-shadow: -1px 2px 18px rgba(255, 255, 255, 0.8);
-    transform: translateY(-8px);
-  }
+.intro-section img {
+  width: 100%; /* 根據容器自動調整寬度 */
+  max-width: 520px; /* 設定最大寬度，防止放大過多 */
+  height: auto; /* 自動調整高度，保持比例 */
+  border-radius: 50%; /* 保持圓形 */
+  transform: translateY(-8px);
+}
 
 
-  iframe {
+iframe {
   aspect-ratio: 16 / 9;
   width: 100%;
   border: none;
+}
+
+.intro-section p {
+  font-size: 20px;
+  line-height: 1.6;
+  color: #dcdcdc;
+}
+
+.blog-post {
+  margin-bottom: 30px;
+  border-bottom: 2px solid #3b5998;
+  padding-bottom: 20px;
+}
+
+.blog-post h2 {
+  font-size: 26px;
+  color: #4c5a73;
+}
+
+.blog-post p {
+  font-size: 16px;
+  color: #dcdcdc;
+  line-height: 1.6;
+}
+
+.blog-post img {
+  max-width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.blog-post img:hover {
+  transform: translateY(-8px); /* 懸停時浮起效果 */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* 霓虹燈外層容器樣式 */
+.circle-neon-container {
+  display: flex;                  /* 使用 Flexbox 居中 */
+  justify-content: center;        /* 水平居中 */
+  align-items: center;            /* 垂直居中 */
+  margin: 0 auto;                 /* 整個容器水平置中 */
+  width: 80%;                     /* 外容器寬度為螢幕寬的 80% */
+  max-width: 780px;               /* 最大寬度為 780px */
+  aspect-ratio: 1 / 1;            /* 保持容器為正方形 */
+  padding: 15px;                  /* 留出空間給霓虹燈效果 */
+  position: relative;             /* 父級元素設置相對定位 */
+  background: linear-gradient(145deg, #3b3f52, #222637); /* 圓形背景的漸層 */
+  border-radius: 50%;             /* 確保外框是圓形 */
+  box-shadow: inset 5px 5px 15px #1e1e2a, inset -5px -5px 15px #44495f,  /* 內部陰影 */
+              0px 0px 15px 10px rgba(0, 0, 255, 0.4);                  /* 外部霓虹光暈 */
+  animation: neonBlueBorder 1.8s ease-in-out infinite; /* 藍色霓虹燈動畫 */
+}
+
+/* 圓形內部圖片區域 */
+.circle-neon {
+  width: 100%;                    /* 填滿外層容器 */
+  height: 100%;                   /* 保持與容器比例一致 */
+  border-radius: 50%;             /* 圓形效果 */
+  display: flex;                  /* 圖片內部居中 */
+  justify-content: center;        /* 水平居中 */
+  align-items: center;            /* 垂直居中 */
+  position: relative;             /* 圖片層定位 */
+  overflow: hidden;               /* 防止內部超出邊框 */
+  box-shadow: linear-gradient(145deg, #ffffff, #d9d9d9)
+              inset 5px 5px 15px rgba(255, 255, 255, 0.5), 
+              inset -5px -5px 15px rgba(0, 0, 0, 0.2); /* 增加立體感 */
+}
+
+.circle-neon img {
+  width: 90%;                     /* 圖片在白邊內部自適應大小 */
+  height: auto;                   /* 保持圖片比例 */
+  border-radius: 50%;             /* 確保圖片本身也是圓形 */
+}
+
+/* 藍色系霓虹燈動畫 */
+@keyframes neonBlueBorder {
+  0% {
+    box-shadow: 0 0 10px #0000ff, 0 0 20px #0000ff, 0 0 40px #1e90ff;
   }
-
-
-
-
-  .intro-section p {
-    font-size: 20px;
-    line-height: 1.6;
-    color: #dcdcdc;
+  33% {
+    box-shadow: 0 0 20px #00bfff, 0 0 40px #00bfff, 0 0 60px #5f9ea0;
   }
-
-  .blog-post {
-    margin-bottom: 30px;
-    border-bottom: 2px solid #3b5998;
-    padding-bottom: 20px;
+  66% {
+    box-shadow: 0 0 30px #1e90ff, 0 0 50px #4169e1, 0 0 70px #4682b4;
   }
-
-  .blog-post h2 {
-    font-size: 26px;
-    color: #4c5a73;
+  100% {
+    box-shadow: 0 0 10px #0000ff, 0 0 20px #0000ff, 0 0 40px #1e90ff;
   }
+}
 
-  .blog-post p {
-    font-size: 16px;
-    color: #dcdcdc;
-    line-height: 1.6;
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .circle-neon-container {
+    width: 90%;                   /* 縮小外層容器寬度 */
   }
+  .circle-neon img {
+    width: 85%;                   /* 縮小圖片比例 */
+  }
+}
 
-  .blog-post img {
-    max-width: 100%;
-    border-radius: 8px;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  }
 
-  .blog-post img:hover {
-    transform: translateY(-8px); /* 懸停時浮起效果 */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+/* 藍色系霓虹燈動畫 */
+@keyframes neonBlueBorder {
+  0% {
+    box-shadow: 0 0 10px #0000ff, 0 0 20px #0000ff, 0 0 40px #1e90ff;
   }
+  33% {
+    box-shadow: 0 0 20px #00bfff, 0 0 40px #00bfff, 0 0 60px #5f9ea0;
+  }
+  66% {
+    box-shadow: 0 0 30px #1e90ff, 0 0 50px #4169e1, 0 0 70px #4682b4;
+  }
+  100% {
+    box-shadow: 0 0 10px #0000ff, 0 0 20px #0000ff, 0 0 40px #1e90ff;
+  }
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .circle-neon-container {
+    width: 90%;                   /* 縮小外層容器寬度 */
+  }
+  .circle-neon img {
+    width: 85%;                   /* 縮小圖片比例 */
+  }
+}
+
 
 /* Footer */
 footer {
