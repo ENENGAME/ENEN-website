@@ -57,7 +57,7 @@
 
 ## 📫 聯絡方式
 
-- **電子郵件**：[Gmail](austin961216@gmail.com)
+- **電子郵件**：[點擊這裡發送郵件](mailto:austin961216@gmail.com?subject=關於專案&body=您好，我有一些關於專案的問題，請您幫忙解答。)
 - **GitHub**：[恩恩的 GitHub 頁面](https://github.com/ENENGAME)
 
 如果您對此專案有任何問題或建議，請隨時與我聯絡。我非常樂意與您交流！
