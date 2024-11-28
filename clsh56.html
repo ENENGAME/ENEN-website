@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>訂單查詢</title>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 16px;
+            color: #555;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .player-info {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .player-info p {
+            margin: 5px 0;
+            color: #555;
+        }
+        .order-info {
+            margin-top: 20px;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f8f9fa;
+            color: #555;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+    <script>
+        const SPREADSHEET_ID = '1pRa8UBShFLTifnPHZSU7_CxpLtMm9k0mlzRy1RLaj3w'; // 替換成你的 Google Sheets ID
+        const RANGE = '訂單回應!A:N'; // 假設資料範圍是從 A 到 E 欄
+
+        // 初始化 Google Sheets API
+        function initApiClient() {
+            gapi.client.init({
+                'apiKey': 'AIzaSyB0pjUimtoomamQ9BVPGwIB-36VNFlVlds',  // 替換為你的 API 密鑰
+                'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
+            }).then(() => {
+                console.log("API 初始化完成");
+            });
+        }
+
+        function loadClient() {
+            gapi.load('client', initApiClient);
+        }
+
+        // 顯示搜尋結果的函式
+        function displaySearchResults(results) {
+            const searchResultsContainer = document.getElementById('search-results');
+            searchResultsContainer.innerHTML = '';
+            if (results.length === 0) {
+                searchResultsContainer.innerHTML = '<p>沒有找到該電話號碼的訂單資訊。</p>';
+            } else {
+                results.forEach(player => {
+                    const playerInfo = document.createElement('div');
+                    playerInfo.classList.add('player-info');
+
+                    const gameName = document.createElement('p');
+                    gameName.textContent = '填表時間：' + (player[0] || '無');
+
+                    const uid = document.createElement('p');
+                    uid.textContent = '班級姓名座號：' + (player[5] || '無');
+
+                    const phone = document.createElement('p');
+                    phone.textContent = '電話號碼：' + (player[6] || '無');
+
+                    const position = document.createElement('p');
+                    position.textContent = '麵的口味：' + (player[7] || '無');
+
+                    const team = document.createElement('p');
+                    team.textContent = '份數：' + (player[8] || '無');
+
+                    const gamePos = document.createElement('p');
+                    gamePos.textContent = '加購飲料：' + (player[9] || '無');
+
+                    const extraInfo1 = document.createElement('p');
+                    extraInfo1.textContent = '單點飲料：' + (player[10] || '無');
+
+                    const extraInfo2 = document.createElement('p');
+                    extraInfo2.textContent = '總金額：' + (player[11] || '');
+
+                    const extraInfo3 = document.createElement('p');
+                    extraInfo3.textContent = '預計領餐時間：' + (player[12] || '');
+
+                    const extraInfo4 = document.createElement('p');
+                    extraInfo4.textContent = '訂單狀態：' + (player[13] || '');
+
+                    // Append all the data to the playerInfo div
+                    playerInfo.appendChild(gameName);
+                    playerInfo.appendChild(uid);
+                    playerInfo.appendChild(phone);
+                    playerInfo.appendChild(position);
+                    playerInfo.appendChild(team);
+                    playerInfo.appendChild(gamePos);
+                    playerInfo.appendChild(extraInfo1);
+                    playerInfo.appendChild(extraInfo2);
+                    playerInfo.appendChild(extraInfo3);
+                    playerInfo.appendChild(extraInfo4);
+
+                    // Append the playerInfo to the search results container
+                    searchResultsContainer.appendChild(playerInfo);
+                });
+            }
+        }
+
+        // 查詢訂單資料
+        function searchOrder() {
+            const phone = document.getElementById("phone").value;
+            if (!phone) {
+                alert("請輸入電話號碼");
+                return;
+            }
+
+            gapi.client.sheets.spreadsheets.values.get({
+                spreadsheetId: SPREADSHEET_ID,
+                range: RANGE,
+            }).then((response) => {
+                const rows = response.result.values;
+                let results = [];
+
+                if (rows.length > 0) {
+                    rows.forEach((row) => {
+                        if (row[6] == phone) { // 假設電話號碼在第一欄 (A)
+                            results.push(row);
+                        }
+                    });
+                }
+
+                // 顯示搜尋結果
+                displaySearchResults(results);
+            }, (error) => {
+                alert("讀取資料錯誤：" + error.result.error.message);
+            });
+        }
+
+        // 確保 API 客戶端已經加載
+        window.onload = function() {
+            loadClient();
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>訂單查詢系統</h1>
+        <label for="phone">請輸入電話號碼：</label>
+        <input type="text" id="phone" placeholder="輸入電話號碼">
+        <button onclick="searchOrder()">搜尋訂單</button>
+
+        <div id="search-results"></div>
+    </div>
+</body>
+</html>
