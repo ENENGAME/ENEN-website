@@ -12,7 +12,7 @@
 
 ### 技能與專長
 - 技術：、`JavaScript`、`HTML/CSS`、`Node.js` 等
-- 工具：`VS Code`、`GitHub`等
+- 工具：`VS Code`、`GitHub`、`Chat GPT`等
 - 領域：`網站製作`、`資料分析`、`即時計分`、`商案合作` 等
 
 ---
