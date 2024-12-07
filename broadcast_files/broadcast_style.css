@@ -271,6 +271,7 @@ iframe {
     height: auto;
     border-radius: 12px; /* 四角圓弧 */
     box-shadow: 0 1px 20px rgba(255, 255, 255, 0.5); /* 添加陰影效果 */
+    margin-bottom: 10px;
   }
   
   /* 按鈕組 */
@@ -319,6 +320,12 @@ iframe {
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     margin-bottom: 20px;
+    /* 讓 broadcast-item 內的項目有些間隔 */
+    .broadcast-item h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
   }
   
   /* 手機版調整 */
@@ -349,6 +356,12 @@ iframe {
     display: block;
   }
 
+  /* 設置分隔線樣式 */
+    .separator {
+    border: none;
+    border-top: 5px solid #3b5998; /* 可以更改顏色或粗細 */
+    margin: 20px 0; /* 分隔線上下的間距 */
+  }
 /* Footer */
 footer {
     background: #1a1a2e;
