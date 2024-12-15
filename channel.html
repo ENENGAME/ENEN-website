@@ -19,6 +19,10 @@
   <title>恩恩官網-影音頻道</title>
 </head>
 <body>
+
+<!-- 使用iframe來嵌入HTML背景 -->
+<iframe id="background-iframe" src="http://www.enenlive.com/bg.html" frameborder="0"></iframe>
+
   <header>
     <div class="logo">
       <a href="https://www.enenlive.com">
@@ -56,39 +60,46 @@
     </div>
     
     <main>
-        <section class="channel-section">
-          <div class="channel-item">
-            <img src="channel_files/YT2.png" alt="YouTube">
-            <h2>YouTube 頻道</h2>
-            <p>觀看最新實況及影片內容。</p>
-            <a href="https://www.youtube.com/@ENENGAMES" class="channel-btn">前往 YouTube</a>
-          </div>
-          <div class="channel-item">
-            <img src="channel_files/FB2.png" alt="Facebook">
-            <h2>Facebook</h2>
-            <p>獲取最新消息與社群互動。</p>
-            <a href="https://www.facebook.com/profile.php?id=100027752241758&locale=zh_TW" class="channel-btn">前往 Facebook</a>
-          </div>
-          <div class="channel-item">
-            <img src="channel_files/IG2.png" alt="Instagram">
-            <h2>Instagram</h2>
-            <p>追蹤我們的日常與活動。</p>
-            <a href="https://www.instagram.com/enen._.1216" class="channel-btn">前往 Instagram</a>
-          </div>
-          <div class="channel-item">
-            <img src="channel_files/TK2.png" alt="TikTok">
-            <h2>TikTok</h2>
-            <p>短影片精華與創意內容。</p>
-            <a href="https://www.tiktok.com/@enengame" class="channel-btn">前往 TikTok</a>
-          </div>
-          <div class="channel-item">
-            <img src="channel_files/DC2.png" alt="Discord">
-            <h2>Discord</h2>
-            <p>加入我們的社群伺服器。</p>
-            <a href="https://discord.gg/t3qEyuxCAr" class="channel-btn">前往 Discord</a>
-          </div>
-        </section>
-      </main>
+      <section class="channel-section">
+         <!-- YT -->
+        <div class="channel-item">
+          <img src="channel_files/YT2.png" alt="YouTube">
+          <h2>YouTube</h2>
+          <p>觀看最新實況及影片內容。</p>
+          <p id="youtube-fans">訂閱人數：加載中...</p> <!-- 新增 -->
+          <a href="https://www.youtube.com/@ENENGAMES" class="channel-btn">前往 YouTube</a>
+        </div>
+         <!-- FB -->
+        <div class="channel-item">
+          <img src="channel_files/FB2.png" alt="Facebook">
+          <h2>Facebook</h2>
+          <p>獲取最新消息與社群互動。</p><br>
+          <a href="https://www.facebook.com/profile.php?id=100027752241758&locale=zh_TW" class="channel-btn">前往 Facebook</a>
+        </div>
+         <!-- IG -->
+        <div class="channel-item">
+          <img src="channel_files/IG2.png" alt="Instagram">
+          <h2>Instagram</h2>
+          <p>追蹤我們的日常與活動。</p>
+          <a href="https://www.instagram.com/enen._.1216" class="channel-btn">前往 Instagram</a>
+        </div>
+         <!-- TikTok -->
+        <div class="channel-item">
+          <img src="channel_files/TK2.png" alt="TikTok">
+          <h2>TikTok</h2>
+          <p>短影片精華與創意內容。</p>
+          <a href="https://www.tiktok.com/@enengame" class="channel-btn">前往 TikTok</a>
+        </div>
+         <!-- DC -->
+      <div class="channel-item">
+        <img src="channel_files/DC2.png" alt="Discord">
+        <h2>Discord</h2>
+        <p>加入我們的社群伺服器。</p>
+        <a href="https://discord.gg/t3qEyuxCAr" class="channel-btn">前往 Discord</a>
+      </div>
+      </section>
+    </main>
+    
 
   <footer>
     <div class="social-icons">
@@ -126,5 +137,24 @@
   
 </script>
 
+<!-- 即時資訊擷取 -->
+<script>
+
+async function fetchYouTubeSubscribers() {
+  const apiKey = 'AIzaSyB0pjUimtoomamQ9BVPGwIB-36VNFlVlds';
+    const channelId = 'UCc912F1Y6cSFMqhY-Xq9B7g';
+  const url = `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${apiKey}`;
+  
+  const response = await fetch(url);
+  const data = await response.json();
+  const subscribers = data.items[0].statistics.subscriberCount;
+  document.getElementById('youtube-fans').textContent = `訂閱人數：${subscribers}`;
+}
+
+// 初始化
+fetchYouTubeSubscribers();
+
+
+</script>
 </body>
 </html>
