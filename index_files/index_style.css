@@ -299,7 +299,7 @@ iframe {
   aspect-ratio: 1 / 1;            /* 保持容器為正方形 */
   padding: 15px;                  /* 留出空間給霓虹燈效果 */
   position: relative;             /* 父級元素設置相對定位 */
-  background: linear-gradient(145deg, #3b3f52, #222637); /* 圓形背景的漸層 */
+  background: linear-gradient(145deg, #3b3f52, #3b3f52); /* 圓形背景的漸層 */
   border-radius: 50%;             /* 確保外框是圓形 */
   box-shadow: inset 5px 5px 15px #1e1e2a, inset -5px -5px 15px #44495f,  /* 內部陰影 */
               0px 0px 15px 10px rgba(0, 0, 255, 0.4);                  /* 外部霓虹光暈 */
