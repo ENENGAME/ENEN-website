@@ -23,34 +23,43 @@
 <!-- 使用iframe來嵌入HTML背景 -->
 <iframe id="background-iframe" src="http://www.enenlive.com/bg.html" frameborder="0"></iframe>
 
-  <header>
-    <div class="logo">
-      <a href="https://www.enenlive.com">
-        <img src="index_files/YTCHANNEL.png" alt="ENEN GAMES Logo">
-      </a>
+<header>
+  <div class="logo">
+    <a href="https://www.enenlive.com">
+      <img src="index_files/YTCHANNEL.png" alt="ENEN GAMES Logo">
+    </a>
+  </div>
+  <nav>
+    <a href="https://www.enenlive.com" class="active">首頁</a>
+    <a href="https://www.enenlive.com/channel">影音頻道</a>
+    <a href="https://www.enenlive.com/broadcast">轉播經歷</a>
+    <a href="https://www.enenlive.com/cooperate">合作介紹</a>
+    <a href="https://www.enenlive.com/cooperate_experience">合作經歷</a>
+    <a href="https://www.enenlive.com/contact">聯絡資訊</a>
+    <div class="search-container">
+      <input type="text" id="searchBox" placeholder="全站搜尋...">
+      <div id="suggestions" class="suggestions-list"></div>
     </div>
-    <nav>
-      <a href="https://www.enenlive.com">首頁</a>
-      <a href="https://www.enenlive.com/channel">影音頻道</a>
-      <a href="https://www.enenlive.com/broadcast">轉播經歷</a>
-      <a href="https://www.enenlive.com/cooperate" class="active">合作介紹</a>
-      <a href="https://www.enenlive.com/cooperate_experience">合作經歷</a>
-      <a href="https://www.enenlive.com/contact">聯絡資訊</a>
-    </nav>
-    <button class="nav-btn" id="navBtn">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    <div class="mobile-nav" id="mobileNav">
-      <a href="https://www.enenlive.com">首頁</a>
-      <a href="https://www.enenlive.com/channel">影音頻道</a>
-      <a href="https://www.enenlive.com/broadcast">轉播經歷</a>
-      <a href="https://www.enenlive.com/cooperate" class="active">合作介紹</a>
-      <a href="https://www.enenlive.com/cooperate_experience">合作經歷</a>
-      <a href="https://www.enenlive.com/contact">聯絡資訊</a>
+  </nav>
+  
+  <button class="nav-btn" id="navBtn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="https://www.enenlive.com">首頁</a>
+    <a href="https://www.enenlive.com/channel">影音頻道</a>
+    <a href="https://www.enenlive.com/broadcast">轉播經歷</a>
+    <a href="https://www.enenlive.com/cooperate">合作介紹</a>
+    <a href="https://www.enenlive.com/cooperate_experience">合作經歷</a>
+    <a href="https://www.enenlive.com/contact">聯絡資訊</a>
+    <div class="mobile-search-container">
+      <input type="text" id="searchBoxMobile" placeholder="全站搜尋...">
+      <div id="suggestionsMobile" class="suggestions-list"></div>
     </div>
-  </header>
+  </div>
+</header>
 <br><br>
     <div class="intro-section">
       <h1>合作介紹</h1>
@@ -147,6 +156,81 @@
     mobileNav.classList.toggle('active');
   });
 
+  // 電腦版搜尋框的搜尋功能
+  const searchBox = document.getElementById("searchBox");
+    const suggestions = document.getElementById("suggestions");
+
+    const data = {
+      "恩恩遊戲日常": "https://www.enenlive.com",
+      "影音頻道": "https://www.enenlive.com/channel",
+      "轉播經歷": "https://www.enenlive.com/broadcast",
+      "合作介紹": "https://www.enenlive.com/cooperate",
+      "合作經歷": "https://www.enenlive.com/cooperate_experience",
+      "聯絡資訊": "https://www.enenlive.com/contact",
+      "Discord社群": "https://discord.gg/t3qEyuxCAr",
+      "TikTok": "https://www.tiktok.com/@enengame",
+      "Instagram": "https://www.instagram.com/enen._.1216",
+      "FaceBook": "https://www.facebook.com/profile.php?id=100027752241758&locale=zh_TW",
+      "YouTube": "https://www.youtube.com/@ENENGAMES",
+      "LGDS求生大挑戰": "https://www.enenlive.com/broadcast",
+      "榮耀菁英盃": "https://www.enenlive.com/broadcast",
+      "FFSI": "https://www.enenlive.com/broadcast",
+      "自辦賽事": "https://www.enenlive.com/broadcast",
+      "網站製作": "https://www.enenlive.com/cooperate",
+      "轉播邀請": "https://www.enenlive.com/cooperate",
+      "Free Fire": "https://league.enenlive.com",
+      "恩恩轉播": "https://league.enenlive.com/ENCH",
+      "台灣18強聯賽": "https://league.enenlive.com/FFTET",
+      "FFTET聯賽": "https://league.enenlive.com/FFTET",
+      "江林轉播": "https://league.enenlive.com/JLCH",
+      "頂尖巔峰聯賽": "https://league.enenlive.com/FFTPL",
+      "FFTPL聯賽": "https://league.enenlive.com/FFTPL",
+      "巔峰爭霸賽": "https://league.enenlive.com/FFPL",
+      "FFPL聯賽": "https://league.enenlive.com/FFPL",
+      "戰隊官網": "https://www.enenlive.com/team",
+      "BNT官網": "https://bnt.enenlive.com",
+      "CZL官網": "https://czl.enenlive.com",
+      "XHD代儲工作室": "https://www.xhdgame.com",
+      "福襄寶石罐": "https://www.fulingem.com",
+      "個人LINE": "https://line.me/ti/p/bnMQKoXaZy",
+      "Github": "https://github.com/ENENGAME/ENEN-website",
+    };
+
+    searchBox.addEventListener("input", function () {
+      const query = searchBox.value.toLowerCase();
+      suggestions.innerHTML = "";
+
+      if (query) {
+        Object.keys(data).forEach((key) => {
+          if (key.toLowerCase().includes(query)) {
+            const button = document.createElement("button");
+            button.textContent = key;
+            button.onclick = () => window.location.href = data[key];
+            suggestions.appendChild(button);
+          }
+        });
+      }
+    });
+
+    // 手機版搜尋框的搜尋功能
+    const searchBoxMobile = document.getElementById("searchBoxMobile");
+    const suggestionsMobile = document.getElementById("suggestionsMobile");
+
+    searchBoxMobile.addEventListener("input", function () {
+      const query = searchBoxMobile.value.toLowerCase();
+      suggestionsMobile.innerHTML = "";
+
+      if (query) {
+        Object.keys(data).forEach((key) => {
+          if (key.toLowerCase().includes(query)) {
+            const button = document.createElement("button");
+            button.textContent = key;
+            button.onclick = () => window.location.href = data[key];
+            suggestionsMobile.appendChild(button);
+          }
+        });
+      }
+    });
   
 </script>
 

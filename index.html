@@ -19,34 +19,44 @@
 <!-- 使用iframe來嵌入HTML背景 -->
 <iframe id="background-iframe" src="http://www.enenlive.com/bg.html" frameborder="0"></iframe>
 
-  <header>
-    <div class="logo">
-      <a href="https://www.enenlive.com">
-        <img src="index_files/YTCHANNEL.png" alt="ENEN GAMES Logo">
-      </a>
+<header>
+  <div class="logo">
+    <a href="https://www.enenlive.com">
+      <img src="index_files/YTCHANNEL.png" alt="ENEN GAMES Logo">
+    </a>
+  </div>
+  <nav>
+    <a href="https://www.enenlive.com" class="active">首頁</a>
+    <a href="https://www.enenlive.com/channel">影音頻道</a>
+    <a href="https://www.enenlive.com/broadcast">轉播經歷</a>
+    <a href="https://www.enenlive.com/cooperate">合作介紹</a>
+    <a href="https://www.enenlive.com/cooperate_experience">合作經歷</a>
+    <a href="https://www.enenlive.com/contact">聯絡資訊</a>
+    <div class="search-container">
+      <input type="text" id="searchBox" placeholder="全站搜尋...">
+      <div id="suggestions" class="suggestions-list"></div>
     </div>
-    <nav>
-      <a href="https://www.enenlive.com" class="active">首頁</a>
-      <a href="https://www.enenlive.com/channel">影音頻道</a>
-      <a href="https://www.enenlive.com/broadcast">轉播經歷</a>
-      <a href="https://www.enenlive.com/cooperate">合作介紹</a>
-      <a href="https://www.enenlive.com/cooperate_experience">合作經歷</a> 
-      <a href="https://www.enenlive.com/contact">聯絡資訊</a>
-    </nav>
-    <button class="nav-btn" id="navBtn">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    <div class="mobile-nav" id="mobileNav">
-      <a href="https://www.enenlive.com">首頁</a>
-      <a href="https://www.enenlive.com/channel">影音頻道</a>
-      <a href="https://www.enenlive.com/broadcast">轉播經歷</a>
-      <a href="https://www.enenlive.com/cooperate">合作介紹</a>
-      <a href="https://www.enenlive.com/cooperate_experience">合作經歷</a>
-      <a href="https://www.enenlive.com/contact">聯絡資訊</a>
+  </nav>
+  
+  <button class="nav-btn" id="navBtn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="https://www.enenlive.com">首頁</a>
+    <a href="https://www.enenlive.com/channel">影音頻道</a>
+    <a href="https://www.enenlive.com/broadcast">轉播經歷</a>
+    <a href="https://www.enenlive.com/cooperate">合作介紹</a>
+    <a href="https://www.enenlive.com/cooperate_experience">合作經歷</a>
+    <a href="https://www.enenlive.com/contact">聯絡資訊</a>
+    <div class="mobile-search-container">
+      <input type="text" id="searchBoxMobile" placeholder="全站搜尋...">
+      <div id="suggestionsMobile" class="suggestions-list"></div>
     </div>
-  </header>
+  </div>
+</header>
+
 
   <main>
     <div class="circle-neon-container">
@@ -102,6 +112,202 @@
       const mobileNav = document.getElementById('mobileNav');
       mobileNav.classList.toggle('active');
     });
+    // 電腦版搜尋框的搜尋功能
+    const searchBox = document.getElementById("searchBox");
+    const suggestions = document.getElementById("suggestions");
+
+    const data = {
+      "恩恩遊戲日常": "https://www.enenlive.com",
+      "影音頻道": "https://www.enenlive.com/channel",
+      "轉播經歷": "https://www.enenlive.com/broadcast",
+      "合作介紹": "https://www.enenlive.com/cooperate",
+      "合作經歷": "https://www.enenlive.com/cooperate_experience",
+      "聯絡資訊": "https://www.enenlive.com/contact",
+      "Discord社群": "https://discord.gg/t3qEyuxCAr",
+      "TikTok": "https://www.tiktok.com/@enengame",
+      "Instagram": "https://www.instagram.com/enen._.1216",
+      "FaceBook": "https://www.facebook.com/profile.php?id=100027752241758&locale=zh_TW",
+      "YouTube": "https://www.youtube.com/@ENENGAMES",
+      "LGDS求生大挑戰": "https://www.enenlive.com/broadcast",
+      "榮耀菁英盃": "https://www.enenlive.com/broadcast",
+      "FFSI": "https://www.enenlive.com/broadcast",
+      "自辦賽事": "https://www.enenlive.com/broadcast",
+      "網站製作": "https://www.enenlive.com/cooperate",
+      "轉播邀請": "https://www.enenlive.com/cooperate",
+      "Free Fire": "https://league.enenlive.com",
+      "恩恩轉播": "https://league.enenlive.com/ENCH",
+      "台灣18強聯賽": "https://league.enenlive.com/FFTET",
+      "FFTET聯賽": "https://league.enenlive.com/FFTET",
+      "江林轉播": "https://league.enenlive.com/JLCH",
+      "頂尖巔峰聯賽": "https://league.enenlive.com/FFTPL",
+      "FFTPL聯賽": "https://league.enenlive.com/FFTPL",
+      "巔峰爭霸賽": "https://league.enenlive.com/FFPL",
+      "FFPL聯賽": "https://league.enenlive.com/FFPL",
+      "戰隊官網": "https://www.enenlive.com/team",
+      "BNT官網": "https://bnt.enenlive.com",
+      "CZL官網": "https://czl.enenlive.com",
+      "XHD代儲工作室": "https://www.xhdgame.com",
+      "福襄寶石罐": "https://www.fulingem.com",
+      "個人LINE": "https://line.me/ti/p/bnMQKoXaZy",
+      "Github": "https://github.com/ENENGAME/ENEN-website",
+    };
+
+    searchBox.addEventListener("input", function () {
+      const query = searchBox.value.toLowerCase();
+      suggestions.innerHTML = "";
+
+      if (query) {
+        Object.keys(data).forEach((key) => {
+          if (key.toLowerCase().includes(query)) {
+            const button = document.createElement("button");
+            button.textContent = key;
+            button.onclick = () => window.location.href = data[key];
+            suggestions.appendChild(button);
+          }
+        });
+      }
+    });
+
+    // 手機版搜尋框的搜尋功能
+    const searchBoxMobile = document.getElementById("searchBoxMobile");
+    const suggestionsMobile = document.getElementById("suggestionsMobile");
+
+    searchBoxMobile.addEventListener("input", function () {
+      const query = searchBoxMobile.value.toLowerCase();
+      suggestionsMobile.innerHTML = "";
+
+      if (query) {
+        Object.keys(data).forEach((key) => {
+          if (key.toLowerCase().includes(query)) {
+            const button = document.createElement("button");
+            button.textContent = key;
+            button.onclick = () => window.location.href = data[key];
+            suggestionsMobile.appendChild(button);
+          }
+        });
+      }
+    });
   </script>
+  <style>
+/* 搜尋框容器 */
+.search-container {
+  position: relative;
+  margin-left: 1px;
+  display: block; /* 預設顯示 */
+}
+
+/* 電腦版搜尋框 */
+#searchBox {
+  padding: 10px;
+  width: 150px;
+  border: 2px solid rgb(0, 170, 255); /* 霓虹藍 */
+  border-radius: 50px;
+  background: rgb(0, 0, 0,0.7); /* 深色背景 */
+  color: rgb(0, 170, 255);
+  font-family: 'GFF Latin', Arial, sans-serif; /* 使用您網站的主要字型 */
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0 0 10px rgb(0, 170, 255); /* 外發光效果 */
+  transition: box-shadow 0.3s ease;
+}
+
+#searchBox:focus {
+  box-shadow: 0 0 20px rgb(0, 170, 255); /* 聚焦時的加強效果 */
+}
+
+/* 手機版搜尋框 */
+#searchBoxMobile {
+  padding: 0px;
+  width: 100%;
+  border: 2px solid rgb(0, 170, 255); /* 霓虹藍 */
+  border-radius: 50px;
+  background: rgb(0, 0, 0,0.7); /* 深色背景 */
+  color: rgb(0, 170, 255);
+  font-family: 'GFF Latin', Arial, sans-serif; /* 使用您網站的主要字型 */
+  font-size: 15px;
+  outline: none;
+  box-shadow: 0 5px 10px rgb(0, 170, 255); /* 外發光效果 */
+  transition: box-shadow 0.3s ease;
+}
+
+#searchBoxMobile:focus {
+  box-shadow: 0 0 20px rgb(0, 170, 255); /* 聚焦時的加強效果 */
+}
+
+/* 建議清單容器 */
+.suggestions-list {
+  position: absolute;
+  top: 45px;
+  left: 0;
+  width: 100%;
+  background: rgb(0, 0, 0,0.7); /* 更暗的背景 */
+  z-index: 1000;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgb(0, 170, 255); /* 整體霓虹光暈效果 */
+}
+
+/* 建議按鈕樣式 */
+.suggestions-list button {
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+  border-radius: 20px;
+  background: rgb(0, 0, 0,0.7);
+  color: #fff; /* 白色字體 */
+  font-family: 'GFF Latin', Arial, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.suggestions-list button:hover {
+  background: rgb(0, 170, 255); /* 滑鼠懸停時背景變為霓虹藍 */
+  color: #000; /* 文字顏色轉為黑色 */
+}
+
+/* 手機版搜尋框 */
+@media (max-width: 768px) {
+  header {
+    justify-content: space-between; /* 手機版時調整為兩端對齊 */
+  }
+
+  .search-container {
+    display: none; /* 電腦版搜尋框隱藏 */
+  }
+
+  /* 顯示手機版搜尋框 */
+  .mobile-search-container {
+    display: block;
+    width: calc(90% - 20px); /* 讓搜尋框的寬度減去左右的間距 */
+    padding: 5px; /* 上下間距 */
+    margin: 10px 10px; /* 左右間距 */
+  }
+
+  #searchBoxMobile {
+    width: 100%;
+    padding: 10px; /* 內邊距 */
+  }
+
+  /* 手機版建議清單 */
+  #suggestionsMobile {
+    width: 100%;
+    position: absolute;
+    top: 550px; /* 調整建議列表顯示的位置，讓它在搜尋框下方 */
+    left: 0;
+    background: #111;
+    box-shadow: 0 0 15px rgb(0, 170, 255);
+    border-radius: 5px;
+    z-index: 1000;
+  }
+}
+
+/* 電腦版搜尋框顯示 */
+@media (min-width: 769px) {
+  #searchBox {
+    display: block; /* 顯示電腦版搜尋框 */
+  }
+}
+
+  </style>
 </body>
 </html>
